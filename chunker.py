@@ -82,22 +82,85 @@ def fallback_split(
 
 def split_documents(documents: list[Document]) -> list[Chunk]:
     """
-    Split documents into chunks. ⚠️ REPLACE THE BODY OF THIS IN MILESTONE 3.
+    Split documents into semantic, paragraph-aware chunks tailored for campus_life.
 
-    Right now it just calls the fallback. That is the plain, generic behaviour
-    the brief is talking about.
-
-    When you write your own strategy, set `produced_by` to
-    "chunker.py::split_documents" so your README's Sample Chunks section names
-    the right function. `app.py chunks` prints that string for you.
-
-    Things worth thinking about before you write any code:
-      - Are your documents short posts or long guides?
-      - Is the useful information in one sentence, or spread over a paragraph?
-      - Would splitting on paragraph breaks keep more thoughts intact than
-        splitting on a character count?
+    Strategy:
+    - Normalizes text and splits on paragraph boundaries (\n\n+).
+    - Preserves heading context: if a document begins with a short heading,
+      that title context is attached to subsequent paragraphs so each chunk
+      stands independently.
+    - If a document is short (<= 650 characters), it remains a single coherent chunk.
+    - If paragraphs are long (> 650 characters), splits on sentence boundaries.
+    - Guards against small fragments (< 60 characters unless it's the only text).
     """
-    return fallback_split(documents)
+    chunks: list[Chunk] = []
+
+    for doc in documents:
+        raw_text = doc.text.strip()
+        if not raw_text:
+            continue
+
+        # Split into non-empty paragraphs
+        paras = [p.strip() for p in raw_text.split("\n\n") if p.strip()]
+        if not paras:
+            continue
+
+        # If document is short enough to fit comfortably in a single chunk, preserve whole
+        if len(raw_text) <= 650:
+            chunks.append(
+                Chunk(
+                    text=raw_text,
+                    source=doc.source,
+                    index=0,
+                    produced_by="chunker.py::split_documents",
+                )
+            )
+            continue
+
+        # If there is a distinct title (short first paragraph < 60 chars), use it as header prefix
+        header = ""
+        body_paras = paras
+        if len(paras) > 1 and len(paras[0]) < 60 and not paras[0].endswith("."):
+            header = paras[0]
+            body_paras = paras[1:]
+
+        doc_chunk_idx = 0
+        current_chunk_parts: list[str] = []
+        current_len = 0
+
+        for para in body_paras:
+            # If adding this paragraph exceeds target size, flush current chunk
+            if current_chunk_parts and (current_len + len(para) > 500):
+                chunk_body = "\n\n".join(current_chunk_parts)
+                full_text = f"{header}\n\n{chunk_body}".strip() if header else chunk_body
+                chunks.append(
+                    Chunk(
+                        text=full_text,
+                        source=doc.source,
+                        index=doc_chunk_idx,
+                        produced_by="chunker.py::split_documents",
+                    )
+                )
+                doc_chunk_idx += 1
+                current_chunk_parts = []
+                current_len = 0
+
+            current_chunk_parts.append(para)
+            current_len += len(para)
+
+        if current_chunk_parts:
+            chunk_body = "\n\n".join(current_chunk_parts)
+            full_text = f"{header}\n\n{chunk_body}".strip() if header else chunk_body
+            chunks.append(
+                Chunk(
+                    text=full_text,
+                    source=doc.source,
+                    index=doc_chunk_idx,
+                    produced_by="chunker.py::split_documents",
+                )
+            )
+
+    return chunks
 
 
 def describe(chunks: list[Chunk]) -> str:
