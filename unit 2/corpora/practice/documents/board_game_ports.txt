@@ -1,0 +1,5 @@
+Ports
+
+There are six ports on the coast track. Each accepts two of the five cargo types, printed on the board.
+
+Selling cargo at a port that accepts it earns two coins. Selling anywhere else earns one.

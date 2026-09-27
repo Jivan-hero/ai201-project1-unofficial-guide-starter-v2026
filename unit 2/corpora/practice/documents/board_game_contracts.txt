@@ -1,0 +1,5 @@
+Contracts in Harbourmaster
+
+Contracts are claimed by delivering the cargo types shown to the port named on the card. You may hold at most two open contracts at a time.
+
+An open contract can be discarded at the start of your turn at a cost of one coin.

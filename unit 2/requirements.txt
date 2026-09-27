@@ -1,0 +1,51 @@
+# AI201 — pinned with BOTH lower and upper bounds, on purpose.
+#
+#
+# Supported Python: 3.11, 3.12, or 3.13. NOT 3.14 — it ships as the default on
+# recent macOS versions and several of these packages don't support it yet.
+
+# Loads your API key out of .env
+python-dotenv>=1.0,<1.2
+
+# Stores the vectors and searches them. Runs on your machine.
+#
+# It also *makes* the vectors. Chroma ships an ONNX build of all-MiniLM-L6-v2
+# and pulls its own dependencies for it (onnxruntime, tokenizers), so there is
+# no separate embedding package on this list. That is deliberate:
+#   - `sentence-transformers` would drag in PyTorch. ~2 GB installed, against
+#     ~100 MB for this route, on a first-week laptop over conference wifi.
+#   - It fetches weights from huggingface.co, which is blocked on more campus
+#     and corporate networks than Chroma's S3 bucket is.
+# Same model, same 384 dimensions, same cosine distances — so THRESHOLD does
+# not move. See `store.py::_embedder`.
+#
+# Week 2's "try a second embedding model" option is the one thing that does
+# need the heavier route. It is an optional install, not a requirement:
+#     pip install 'sentence-transformers>=3.4,<3.5'
+chromadb>=0.6,<0.7
+
+# Not used directly. This is chromadb's telemetry dependency, and chromadb
+# declares it as `posthog>=2.4.0` with NO upper bound. posthog 7.x changed a
+# function signature that chromadb still calls the old way, so with a current
+# posthog every Chroma call prints "Failed to send telemetry event ...".
+# It looks exactly like a real error and isn't one. Pinned here because
+# chromadb didn't pin it — this is the same class of bug as the unpinned
+# Gradio that crashed a live class last year.
+posthog>=3.0,<4.0
+
+# Calls the hosted model that writes answers. The only paid dependency,
+# and it's free at the tier this course uses.
+google-genai>=1.0,<2.0
+
+# Keyword search, for one of week 2's improvement options. Shipped pinned so
+# it's there if you want it — the implementation is yours to write.
+rank-bm25>=0.2.2,<0.3
+
+# Serves the pipeline over HTTP, so the same code can run as a web service
+# instead of a command that exits. That's serve.py.
+flask>=3.0,<3.2
+
+# Week 9 only, and unused before then. The server Flask starts for you is a
+# development server and says so out loud; this is the one you actually deploy
+# behind. Installed now so week 9 is a command, not a dependency problem.
+gunicorn>=23.0,<24.0

@@ -1,0 +1,5 @@
+Why the rules are like this
+
+The two-action limit exists to keep turns short. An earlier version allowed three actions and games ran past two hours.
+
+Crew tokens scoring two points if unspent is deliberate tension: the tokens are most useful exactly when you can least afford to lose the points.

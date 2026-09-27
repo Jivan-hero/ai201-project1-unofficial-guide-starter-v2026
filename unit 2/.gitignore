@@ -1,0 +1,27 @@
+# API keys — never commit these
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Local vector store — rebuilt by `python app.py index`
+chroma_db/
+chroma/
+
+# Cached model responses
+.cache/
+
+# OS noise
+.DS_Store
+Thumbs.db
+
+# NOTE: results/ is deliberately NOT ignored. Your run logs are evidence that
+# the test actually happened, and they're part of what gets graded. Commit them.

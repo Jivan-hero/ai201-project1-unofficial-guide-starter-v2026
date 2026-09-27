@@ -1,0 +1,5 @@
+Scoring Harbourmaster
+
+The game ends when the cargo deck runs out. Each player scores one point per coin, three points per completed contract, and two points for each crew token still unused.
+
+Ties are broken in favour of the player furthest along the coast track.

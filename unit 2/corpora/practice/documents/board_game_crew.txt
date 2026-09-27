@@ -1,0 +1,5 @@
+Crew in Harbourmaster
+
+Crew tokens are spent to take a third action in a turn. Each token is worth one extra action and is returned to the supply when spent.
+
+Unspent crew are worth two points each at the end, so spending them all is rarely correct.

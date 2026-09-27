@@ -1,0 +1,46 @@
+Teaching Harbourmaster to a table that has never played it
+
+A first game with new players runs closer to ninety minutes than the usual
+fifty, and most of the difference is explanation. This is the order that keeps
+that explanation short.
+
+Start with the shape of the game
+
+Say what winning looks like before you say what the pieces are. You sail along a
+coast, buy cargo, sell it at ports that want it, and finish contracts. The game
+ends when the cargo deck runs out and points come from coins, completed
+contracts, and crew tokens you managed not to spend. Two minutes on that makes
+every rule afterwards land somewhere.
+
+Explain the market row before the first turn
+
+The escalating cost of the market row is the rule new players forget most often,
+and the worst moment to explain it is when someone has already reached for the
+rightmost card. Say it early: leftmost is free, each slot right costs one more
+coin, the rightmost costs three. Then say that the row refills as soon as a card
+leaves it, because that is the second most forgotten rule and the two of them
+compound.
+
+What to leave out of the first explanation
+
+Do not teach the expansion, the solo rules, or the alternative setups in a first
+game. Do not read out pages six and seven of the rulebook either; they are
+worked examples and they are more useful after a game than before one. Anything
+you leave out can be added in the second game, and a table that is still
+listening at the end of your explanation plays better than a table that heard
+everything.
+
+Questions you will be asked
+
+Can I hold four cargo cards? No, three, and the limit applies at all times
+rather than only at the end of a turn. Can I sell cargo at a port that does not
+accept it? Yes, for one coin instead of two. Can I discard a contract I cannot
+finish? Yes, at the start of your turn, for one coin. Does a crew token give me
+another turn? No, one extra action inside the turn you spend it in.
+
+During the game
+
+Ask everyone to announce actions as they take them. Two actions per turn is easy
+to miscount when people are talking, and a miscounted turn discovered three
+turns later is not really fixable. Expect new players to sail more than they
+load, and let them; noticing that themselves is worth more than being told.

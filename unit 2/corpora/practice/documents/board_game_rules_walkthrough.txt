@@ -1,0 +1,45 @@
+A full walkthrough of a game of Harbourmaster
+
+This is the whole game in one place, in the order it happens. The rulebook
+covers the same ground across eight pages; this is the version to read if you
+have already played once and want a reminder rather than a lesson.
+
+Before the first turn
+
+Lay out the coast board and give every player a boat board, three crew tokens,
+and five coins. Shuffle the cargo deck and deal four cards face up to make the
+market row. Decide which two cargo types the sixth port will accept, since that
+port is the flexible one and it is chosen at setup rather than printed. Whoever
+most recently ate fish goes first, and everyone else takes turns clockwise.
+
+The market row and what it costs
+
+The four face-up cargo cards are not priced equally. The leftmost card is free
+to load. Each slot further right costs one more coin, so the second costs one,
+the third costs two, and the rightmost costs three. When a card leaves the row,
+slide the remaining cards left and deal a new one into the rightmost slot
+immediately, not at the end of the turn. Doing the refill late is the single
+most common mistake at a table of people who half-remember the rules, and it
+quietly changes what everyone else can afford.
+
+Actions on your turn
+
+You take exactly two actions, chosen from sail, load, sell, and hire, and you
+may take the same action twice. Sailing moves your boat one space along the
+coast track. Loading takes one market card into your hold, which never holds
+more than three cards. Selling puts a cargo card into a port: two coins if that
+port accepts the type, one coin if it does not. A crew token may be spent to
+take a third action, and the token goes back to the supply once spent.
+
+Contracts
+
+A contract card names cargo types and a destination port, and is claimed by
+delivering those types to that port. You may have two open contracts at once and
+no more. A contract you cannot finish can be discarded at the start of your turn
+for one coin, which is usually worth doing sooner than people do it.
+
+Ending the game and scoring
+
+The game ends when the cargo deck runs out. Score one point per coin, three
+points per completed contract, and two points for every crew token you never
+spent. The player furthest along the coast track wins a tie.

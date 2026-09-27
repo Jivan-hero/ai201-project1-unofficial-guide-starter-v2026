@@ -1,0 +1,5 @@
+About the game
+
+Harbourmaster is a fictional board game invented for this course. It exists so that a practice corpus can be small, self-contained, and obviously unrelated to anything you'll be graded on.
+
+If your instructor is demonstrating something with this corpus, nothing you do to it affects your project.

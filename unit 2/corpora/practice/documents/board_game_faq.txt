@@ -1,0 +1,7 @@
+Questions that come up
+
+Can I sell cargo at a port that doesn't accept it? Yes, for one coin instead of two.
+
+Can I discard a contract I can't finish? Yes, at the start of your turn, for one coin.
+
+Can I hold four cargo cards? No. Three is the hold limit and it applies at all times, not just at the end of a turn.

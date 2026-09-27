@@ -1,0 +1,5 @@
+CS 340 Databases — assessment
+
+One midterm and a final, both open-book. Lightly curved, usually two or three points.
+
+Start the term project in week three, not week eight; everyone learns this the hard way.

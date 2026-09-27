@@ -1,0 +1,7 @@
+CS 210 Data Structures
+
+I'm a junior and I've done this twice now. Format is lecture with weekly labs; slides go up after class, not before. Assessment: two midterms and a final, all drawn from lecture material rather than the textbook. Midterms are curved, the final is not.
+
+Expect 8 to 10 hours a week outside class.
+
+The one piece of advice: do the labs even though they're only 10% — the exams reuse the lab problems.

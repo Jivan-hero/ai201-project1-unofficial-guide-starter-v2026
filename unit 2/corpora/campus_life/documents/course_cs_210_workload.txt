@@ -1,0 +1,5 @@
+Workload for CS 210 Data Structures
+
+People keep asking so: 8 to 10 hours a week outside class. That's real time, not optimistic time.
+
+It's front-loaded — the first month is heavier than the rest, partly because you're learning the format.

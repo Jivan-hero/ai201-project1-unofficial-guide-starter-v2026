@@ -1,0 +1,5 @@
+A worked scoring example
+
+At the end of a four-player game, one player finished with 9 coins, 2 completed contracts, and 1 unused crew token. That scores 9 for coins, 6 for contracts, and 2 for the crew — 17 points total.
+
+A second player had 3 coins, 4 contracts, and no crew: 3 plus 12 plus 0, which is 15. Coins rarely decide a game; contracts usually do.

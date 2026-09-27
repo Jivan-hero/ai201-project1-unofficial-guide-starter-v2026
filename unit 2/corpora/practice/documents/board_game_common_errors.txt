@@ -1,0 +1,5 @@
+Rules people get wrong
+
+Hold capacity is three cards, not three of each type. Crew tokens give an extra action, not an extra turn.
+
+The market row is refilled immediately after a card is taken, not at the end of the turn. This matters more than it sounds.

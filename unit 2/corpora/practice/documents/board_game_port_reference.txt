@@ -1,0 +1,5 @@
+Which port accepts what
+
+The six ports each accept two cargo types, printed on the board. Reading from the start of the coast track: timber and salt; salt and wool; wool and fish; fish and iron; iron and timber; and the sixth port accepts any two types chosen at setup.
+
+The sixth port being flexible is what makes the far end of the track worth reaching.

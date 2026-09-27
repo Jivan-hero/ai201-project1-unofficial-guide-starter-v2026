@@ -1,0 +1,5 @@
+Taking a turn in Harbourmaster
+
+On your turn you take exactly two actions from: sail, load, sell, or hire. You may take the same action twice.
+
+Sailing moves your boat one space along the coast track. Loading takes one cargo card from the market row into your hold, which holds three cards maximum.

@@ -1,0 +1,42 @@
+House rules and table variants for Harbourmaster
+
+None of these are official. They come from tables who wanted the game to be
+slightly different and wrote down what happened. Each one says what it changes
+and what it costs you, because most variants trade one thing for another.
+
+Making the game shorter
+
+Removing fifteen cards from the cargo deck before shuffling ends the game about
+fifteen minutes earlier, which is the cleanest cut available. Two players is
+also simply faster, at around thirty minutes, because removing a port from each
+end of the coast track shortens everything downstream. What you lose in a
+shortened game is the late game, which is where counting the cargo types that
+have already appeared starts to pay off. If your table enjoys that part, cut
+something else instead.
+
+Making the game longer or tighter
+
+Dealing every player one contract at the start rather than none adds pressure
+from the first turn, and it favours whoever has played before, so it is a poor
+choice for a mixed table. The Storm Season expansion adds about fifteen minutes
+and is generally thought an improvement by people who have played the base game
+more than three or four times. Below that, it is one more system to explain
+during a game that is already the longest one that group has played.
+
+Crew variants
+
+The most common house rule is starting with four crew tokens instead of three.
+It makes early turns more flexible and slightly cheapens the two points an
+unspent token is worth at the end, since there is one more of them. A table that
+finds the crew decision too painful will like it. A table that likes the
+decision should leave it alone, because the tension between using a token now
+and scoring it later is deliberate and is most of what the tokens are for.
+
+Variants that do not work
+
+Five players does not work, and the fix people reach for — dealing five market
+cards instead of four — only makes the game affordable, not fast. The coast
+track becomes congested, turns take too long, and the game runs close to two
+hours. Raising the hold limit from three to four also does not work: cargo is
+the constraint the whole game is built around, and removing it removes most of
+the reason to plan a route at all.

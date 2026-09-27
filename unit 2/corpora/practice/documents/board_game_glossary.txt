@@ -1,0 +1,5 @@
+Terms used in the rules
+
+HOLD — the three card slots on your boat board. CONTRACT — a card naming cargo types and a destination port. CREW — a token spent for an extra action. MARKET ROW — the four face-up cargo cards.
+
+COAST TRACK — the six-space route along the board. TICK — one full round of turns, ending when play returns to the starting player.

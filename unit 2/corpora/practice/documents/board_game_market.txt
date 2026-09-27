@@ -1,0 +1,5 @@
+The market row
+
+Four cargo cards sit face up. When one is taken, slide the others left and deal a new card to the rightmost slot.
+
+The leftmost card costs nothing to load. Each slot to the right costs one additional coin, so the rightmost card costs three.

@@ -1,0 +1,48 @@
+Strategy notes for players past their first game
+
+Nothing here is a rule. It is what tends to be true, and a table that disagrees
+with all of it can still be playing correctly.
+
+The opening
+
+Most new players sail too much and load too little. Cargo is the constraint in
+the early game rather than position, and a boat sitting at a good port with an
+empty hold has spent its turns badly. Taking the leftmost market card repeatedly
+is usually stronger than paying two or three coins for a better card, at least
+until you hold a contract that names a specific type. Coins spent early on the
+right-hand end of the market row are coins you rarely get back.
+
+The middle of the game
+
+Once you have contracts open, route planning matters more than price. The six
+ports each accept two cargo types, and they run along the track so that
+neighbouring ports share a type: timber and salt, then salt and wool, then wool
+and fish, then fish and iron, then iron and timber. That overlap means a hold
+with two adjacent types can often be emptied in one stretch of the track without
+doubling back. The sixth port takes whichever two types were chosen at setup,
+which is what makes the far end of the track worth the sailing.
+
+The last few turns
+
+The deck running out ends the game, so count what is left in it once it looks
+thin. A contract you cannot finish before the deck empties is worth one coin to
+discard and nothing to keep. Crew tokens are two points each if unspent, which
+means spending your last token to squeeze out a two-coin sale is exactly break
+even, and spending it to complete a contract is clearly worth it. Deciding that
+in advance is easier than deciding it under time pressure.
+
+Where the points actually come from
+
+A worked example is worth more than a principle here. Nine coins, two contracts
+and one unspent crew token scores seventeen. Three coins, four contracts and no
+crew scores fifteen. The player with three times fewer coins came within two
+points, and the difference between those two players was contracts, not trade.
+Coins rarely decide a game. If you are choosing between one more sale and one
+more delivery, deliver.
+
+Playing against people who know this
+
+Since the cargo distribution is even — twelve each of five types — counting what
+has already appeared is legitimate and moderately effective late on. Assume an
+experienced opponent is doing it, and assume they can see which contract you are
+setting up for from the types in your hold.

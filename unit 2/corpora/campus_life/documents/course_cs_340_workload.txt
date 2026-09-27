@@ -1,0 +1,5 @@
+Workload for CS 340 Databases
+
+People keep asking so: 6 hours a week early, 15 in the last three weeks when the project lands. That's real time, not optimistic time.
+
+It's front-loaded — the first month is heavier than the rest, partly because you're learning the format.

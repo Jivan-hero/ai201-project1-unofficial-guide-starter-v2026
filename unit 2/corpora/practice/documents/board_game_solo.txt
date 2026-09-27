@@ -1,0 +1,5 @@
+Solo Harbourmaster
+
+Play with two boats, alternating turns between them, and try to score more than 40 points across both by the time the cargo deck runs out.
+
+The market row is dealt to three cards rather than four. Contracts are not restricted to two open per boat.
