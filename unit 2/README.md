@@ -118,117 +118,162 @@ To determine the relevance gate cutoff, I measured the top cosine distance score
 
 # Week 2
 
-<!-- These sections get ADDED to what's already above. Don't delete or rewrite
-     week 1 — the point is that someone can see what you said before you knew
-     how it went. -->
-
 ## Run Log — Before
-
-<!-- Your five criteria, three runs each. `python run_eval.py --label before`
-     runs the questions, puts the OUT_OF_SCOPE ones through the gate, and
-     writes it all into results/ for you. Targets come from criteria.md; the
-     verdict column is your call.
-
-     Criterion 3 is measured in one deterministic pass rather than three, so
-     the same number goes in all three run columns. That's correct, not lazy.
-
-     Milestone 1. -->
 
 | Criterion | Target | Run 1 | Run 2 | Run 3 | Verdict |
 |---|---|---|---|---|---|
-| 1. Retrieved chunk contains the answer | 4 of 5 |  |  |  |  |
-| 2. Every answer names a source | 5 of 5 |  |  |  |  |
-| 3. Gate stops out-of-corpus questions | 4 of 5 |  |  |  |  |
-| 4. | | | | | |
-| 5. | | | | | |
+| 1. Retrieved chunks contain the answer | 4 of 5 | 5/5 | 5/5 | 5/5 | MET |
+| 2. Every answer names a source | 5 of 5 | 5/5 | 5/5 | 5/5 | MET |
+| 3. Gate stops out-of-corpus questions | 4 of 5 | 5/5 | 5/5 | 5/5 | MET |
+| 4. Complete chunks; none under 80 characters | 4 of 5 sampled; 0% under 80 | 5/5; 0/88 short | 5/5; 0/88 short | 5/5; 0/88 short | MET |
+| 5. Primary source is rank 1 | 4 of 5 | 5/5 | 5/5 | 5/5 | MET |
 
-<!-- Underneath, paste the REAL output for each criterion from one of your
-     runs — the actual text your system produced, not a description of it.
-     Name the file and function that produced it. -->
+The raw transcript is in `results/run_2026-09-27_0356_before.md`, produced by
+`run_eval.py::main`. Generated answers were judged by reading the saved text;
+retrieval criteria were checked from `store.py::search` output.
+
+### Real output used for the calls
+
+**Criteria 1 and 2 — generated answer from run 1**
+
+```text
+For rising juniors and seniors, the housing lottery orders students by
+accumulated credit hours first, with a random tie-break used only when
+necessary (*admin_housing_lottery.txt*).
+```
+
+The answer-bearing phrase was present in the rank-1 retrieved chunk and the
+answer names its source. The same checks were made for all five questions in
+all three runs.
+
+**Criterion 3 — `run_eval.py::check_out_of_scope`**
+
+```text
+What is the capital of Mongolia?                         0.825  refused
+How do I change the oil in a diesel engine?              0.934  refused
+Who won the 1994 World Cup?                              0.886  refused
+What is the recommended dosage of ibuprofen?             0.844  refused
+How do I write a for loop in Rust?                        0.896  refused
+```
+
+**Criterion 4 — `chunker.py::split_documents`**
+
+```text
+88 chunks; shortest chunk 178 characters; 0 chunks under 80 characters.
+Sample result: 5 of 5 inspected chunks were complete, self-contained thoughts.
+```
+
+**Criterion 5 — rank-1 output from `store.py::search`**
+
+| Question topic | Rank-1 source | Distance |
+|---|---|---:|
+| Housing lottery | `admin_housing_lottery.txt` | 0.193 |
+| Halden Hall dining | `dining_halden_hall.txt` | 0.262 |
+| CS 210 curves | `course_cs_210_exams.txt` | 0.308 |
+| Aldridge laundry | `housing_aldridge_hall_laundry.txt` | 0.263 |
+| Dropping after week two | `admin_add_drop_deadline.txt` | 0.351 |
 
 ## Verdicts
 
-<!-- MET or MISSED for each of the five, against the target you wrote last
-     week — not a new one. Plus a sentence on how you decided. That sentence
-     matters most where it was close.
-
-     If your target said 4 of 5 and your runs came out 4, 3, 4, that's a MISS.
-     The target has to hold, not show up occasionally.
-
-     Milestone 2. -->
-
 | # | Criterion | Verdict | How I decided |
 |---|---|---|---|
-| 1 |  |  |  |
-| 2 |  |  |  |
-| 3 |  |  |  |
-| 4 |  |  |  |
-| 5 |  |  |  |
+| 1 | Retrieved chunks contain the answer | MET | All five questions had an answer-bearing chunk in every deterministic retrieval pass, exceeding the 4-of-5 target. |
+| 2 | Every answer names a source | MET | All 15 generated answers named at least one source document, meeting the 5-of-5 target in every run. |
+| 3 | Gate stops out-of-corpus questions | MET | The gate refused all five out-of-scope questions; the deterministic 5/5 result is repeated across the three columns. |
+| 4 | Chunk completeness and fragment prevention | MET | All five sampled chunks were complete and none of the 88 chunks was shorter than 80 characters. |
+| 5 | Primary source rank-1 accuracy | MET | The ground-truth primary document ranked first for all five questions, exceeding the 4-of-5 target. |
 
 ## Diagnoses
 
-<!-- For each miss: which stage caused it, and how. The stage alone isn't
-     enough — you need the mechanism.
+No criterion was missed, so there is no failed criterion to diagnose. The
+targets were safe for this focused corpus: every question maps to a dedicated
+single-topic file, and the embedding distances leave a large gap between
+in-scope and out-of-scope questions.
 
-     Not a diagnosis: "Question 3 didn't work."
-     A diagnosis:     "Question 3 asks about laundry costs. The answer is in
-                       one sentence that got split across two chunks, so
-                       neither chunk on its own contains it."
+The weakness visible in the evidence is at the **retrieval stage**. With
+`TOP_K = 5`, each question retrieved five chunks even though its correct source
+was already rank 1. Across the five questions, that sent 25 chunks into the
+generation prompt, including peripheral sources such as a statistics exam file
+for the housing-lottery question and other dorms for the Aldridge-laundry
+question. The extra context did not cause a wrong answer in these runs, but it
+is unnecessary noise and creates more opportunity for a future answer to mix
+facts from neighboring topics.
 
-     The five stages: loading → chunking → embedding → retrieval → generation.
-
-     Look for a pattern. If three misses all ask about numbers, that's one
-     problem, not three.
-
-     Missed nothing? Say so, then say honestly whether your targets were set
-     low, and which one you'd tighten and to what.
-
-     Milestone 3. -->
+If I were tightening a criterion, I would change criterion 1 in the next unit
+from “answer appears somewhere in the top five” to “the answer is in the top
+three for at least 4 of 5 questions.” The original criterion remains unchanged
+in `criteria.md` because it is measurable and was met; this is not a retroactive
+revision.
 
 ## The Improvement
 
-**What I changed:**
+**What I changed:** I changed `TOP_K` in `config.py` from 5 to 3. This is the
+only system change made in Unit 2.
 
-**Why I picked it:**
-
-<!-- Connect it to a specific diagnosis above in one sentence. If you can't,
-     you picked a fix because it sounded impressive. -->
+**Why I picked it:** The diagnosis showed over-retrieval: the answer-bearing
+source was rank 1 for every question, while the fourth and fifth chunks were
+usually peripheral. Retrieving three chunks should reduce prompt noise without
+removing the evidence needed to answer.
 
 ### Run Log — After
 
-<!-- Same format, same five criteria, three runs each.
-     `python run_eval.py --label after` -->
-
 | Criterion | Target | Run 1 | Run 2 | Run 3 | Verdict |
 |---|---|---|---|---|---|
-| 1. Retrieved chunk contains the answer | 4 of 5 |  |  |  |  |
-| 2. Every answer names a source | 5 of 5 |  |  |  |  |
-| 3. Gate stops out-of-corpus questions | 4 of 5 |  |  |  |  |
-| 4. | | | | | |
-| 5. | | | | | |
+| 1. Retrieved chunks contain the answer | 4 of 5 | 5/5 | 5/5 | 5/5 | MET |
+| 2. Every answer names a source | 5 of 5 | 5/5 | 5/5 | 5/5 | MET |
+| 3. Gate stops out-of-corpus questions | 4 of 5 | 5/5 | 5/5 | 5/5 | MET |
+| 4. Complete chunks; none under 80 characters | 4 of 5 sampled; 0% under 80 | 5/5; 0/88 short | 5/5; 0/88 short | 5/5; 0/88 short | MET |
+| 5. Primary source is rank 1 | 4 of 5 | 5/5 | 5/5 | 5/5 | MET |
 
-**Did it help?**
+The full transcript is in `results/run_2026-09-27_0357_after.md`.
 
-<!-- Say plainly whether it did, and how you know. If it made things worse,
-     say that — a change that backfired, honestly reported, earns full credit
-     and is more interesting than one that worked. What matters is that you can
-     tell.
+**Real output after the change (run 1):**
 
-     Milestone 4. -->
+```text
+Laundry in Aldridge Hall costs $1.75 to wash and $1.50 to dry, and it
+is card only.
+
+This answer comes from the documents housing_aldridge_hall_laundry.txt
+and housing_aldridge_hall.txt.
+```
+
+**Did it help?** Yes, on the issue it targeted. The number of retrieved chunks
+sent to generation fell from 25 total (5 per question) to 15 total (3 per
+question), a 40% reduction. All five original criteria remained MET across all
+three runs. Best distances and rank-1 sources were unchanged, all 15 answers
+still cited sources, and the gate still refused 5 of 5 out-of-scope questions.
+The change improved retrieval precision without measurable regression on this
+test set.
 
 ## What's Still Broken
 
-<!-- For each criterion still missed after your fix: what you'd do about it,
-     and why you stopped where you did.
+No original acceptance criterion remains missed, but the test still has two
+limitations:
 
-     "I ran out of time" is fine if it's true. Pretending nothing is left is
-     not.
-
-     Milestone 5. -->
+1. The five questions are unusually clean and each has a dedicated source
+   file. I would add paraphrased, ambiguous, and multi-document questions to
+   learn whether top-3 retrieval is still enough outside the happy path.
+2. Answer correctness was judged manually from saved text. I would build a
+   scorer with question-specific facts and citation checks, then compare its
+   decisions against a small human-labeled set. I stopped here because the
+   assignment requires one isolated improvement, and adding a scorer would be
+   a second system change rather than part of the retrieval fix.
 
 ## What I'd Do Differently
 
-<!-- Knowing what you know now — which of your five criteria would you write
-     differently, and why?
+I would rewrite criterion 1 before the next unit to measure the top three
+results instead of any result in the top five. The original 4-of-5 target was
+too easy for a corpus made of dedicated single-topic files and did not expose
+the unnecessary fourth and fifth chunks. I would also make criterion 2 require
+that the cited source actually supports the claim, not merely that a filename
+appears in the answer.
 
-     Milestone 5. -->
+## How I Used AI — Week 2
+
+I used AI to organize the raw transcripts into criterion-level counts and to
+challenge the improvement choice. I verified every proposed count against the
+saved run logs and local retrieval output rather than accepting a summary. AI
+suggested hybrid search as a more ambitious option, but the evidence did not
+show a keyword-retrieval failure. I chose the smaller top-k change because it
+directly addressed the observed over-retrieval and could be measured with one
+controlled before/after comparison.
